@@ -1,0 +1,9 @@
+:root, html, body {
+  height: 100%;
+  overflow-x: hidden;
+  background-color: #FAFAFA;
+}
+
+.grid__container {
+  height: 100%;
+}
