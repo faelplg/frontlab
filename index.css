@@ -2,7 +2,7 @@
 
 html, body {
   height: 100%;
-  background-color: #7200CA;
+  background-color: #FAFAFA;
   color: #FFFFFF;
   font-family: 'Merriweather', serif;
   font-size: 16px;
@@ -14,12 +14,14 @@ html, body {
 #grid__container {
   overflow-x: hidden;
   height: 100%;
+  background-color: #AA00FF;
   display: grid;
   grid-template-areas:
     'main main main main main main';
   grid-gap: 8px;
 }
 
+/* css flex */
 .flex--row {
   display: -webkit-flex; /* Safari */
   display: flex;
@@ -27,26 +29,30 @@ html, body {
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
 }
+.flex--row div {
+  -webkit-flex: 1; /* Safari 6.1+ */
+  flex: 1;
+}
+.flex--flow .align-center {
+  -webkit-align-self: center; /* Safari 7;0+ */
+  align-self: center;
+}
 
 /* typography */
 h1, h2, h3, h4, h5, p {
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
-
+.text-display-3 {
+  font-size: 56px;
+  font-weight: 400px;
+  line-height: 64px;
+}
 .headline {
   font-family: 'Bungee Inline', cursive;
   font-size: 24px;
   font-weight: 400;
   line-height: 32px;
-}
-
-a {
-  text-decoration: none;
-  color: lightskyblue;
-}
-a:hover {
-  color: blue;
 }
 
 .text-center {

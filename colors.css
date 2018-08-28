@@ -1,5 +1,17 @@
 /* frontlab theme */
-.main__color--background {
-  background-color: #AA00FF;
+.main__color {
+  color: #AA00FF;
 }
-.grid__main { background-color: #AA00FF; }
+
+/* typography */
+a {
+  text-decoration: none;
+  color: lightskyblue;
+}
+a:hover {
+  color: blue;
+}
+
+.text-display-3 {
+  color: #AA00FF;
+}
