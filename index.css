@@ -3,7 +3,7 @@
 html, body {
   height: 100%;
   background-color: #FAFAFA;
-  color: #FFFFFF;
+  color: #222222;
   font-family: 'Merriweather', serif;
   font-size: 16px;
   margin:0;
@@ -14,7 +14,6 @@ html, body {
 #grid__container {
   overflow-x: hidden;
   height: 100%;
-  background-color: #AA00FF;
   display: grid;
   grid-template-areas:
     'main main main main main main';
@@ -43,13 +42,20 @@ h1, h2, h3, h4, h5, p {
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
+.text-display-4 {
+  font-family: 'Bungee Shade', cursive;
+  font-size: 112px;
+  font-weight: 300px;
+  line-height: 128px;
+}
 .text-display-3 {
+  font-family: 'Bungee', cursive;
   font-size: 56px;
   font-weight: 400px;
   line-height: 64px;
 }
 .headline {
-  font-family: 'Bungee Inline', cursive;
+  font-family: 'Bungee', cursive;
   font-size: 24px;
   font-weight: 400;
   line-height: 32px;
