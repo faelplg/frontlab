@@ -1,19 +1,31 @@
+@@import 'colors.css';
+
 :root, html, body {
   height: 100%;
-  overflow-x: hidden;
   background-color: #FAFAFA;
+  color: #222222;
   font-family: 'Merriweather', serif;
   font-size: 16px;
   margin:0;
 }
 
+.grid__main { grid-area: main; }
+
 #grid__container {
+  overflow-x: hidden;
   height: 100%;
+  display: grid;
+  grid-template-areas:
+    'main main main main main main';
+  grid-gap: 8px;
 }
 
 .flex--row {
+  display: -webkit-flex; /* Safari */
   display: flex;
-  flex-flow: row;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
 }
 
 /* typography */
@@ -27,10 +39,15 @@ h1, h2, h3, h4, h5, p {
   font-weight: 400;
   line-height: 32px;
 }
+
 a {
   text-decoration: none;
   color: lightskyblue;
 }
 a:hover {
   color: blue;
+}
+
+.text-center {
+  text-align: center;
 }
