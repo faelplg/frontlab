@@ -1,5 +1,5 @@
 /* frontlab theme */
-.main__color {
+.frontlab--color {
   color: #AA00FF;
 }
 
@@ -12,6 +12,6 @@ a:hover {
   color: blue;
 }
 
-.text-display-4 {
-  color: #AA00FF;
+.card {
+  background-color: #EEE;
 }

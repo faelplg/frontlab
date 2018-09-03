@@ -11,6 +11,7 @@ html, body {
 
 .grid_header { grid-area: header; }
 .grid__main { grid-area: main; }
+.grid__cards { grid-area: cards; }
 .grid__footer { grid-area: footer; }
 
 #grid__container {
@@ -20,19 +21,31 @@ html, body {
   grid-template-areas:
     'header'
     'main'
+    'cards'
     'footer';
   grid-gap: 8px;
 }
 
 /* css flex */
-.flex--row {
-  display: -webkit-flex; /* Safari */
-  display: flex;
+.flex {
+  display: -webkit-box;   /* OLD - iOS6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;   /* TWEENER - IE 10 */
+  display: -webkit-flex;  /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;          /* NEW, Spec - Firefox, Chrome, Opera */
+}
+
+.flow--row {
   -webkit-flex-flow: row wrap;
   -ms-flex-flow: row wrap;
   flex-flow: row wrap;
 }
-.flex--row div {
+.flow--column {
+  -webkit-flex-flow: column wrap;
+  -ms-flex-flow: column wrap;
+  flex-flow: column wrap;
+}
+.flow--row div,
+.flow--column div {
   -webkit-flex: 1; /* Safari 6.1+ */
   flex: 1;
 }
@@ -48,19 +61,31 @@ h1, h2, h3, h4, h5, p {
   margin-top: 1rem;
 }
 .text-display-4 {
-  font-family: 'Bungee', cursive;
+  font-family: 'VT323', monospace;
   font-size: 112px;
-  font-weight: 300px;
+  font-weight: 300;
   line-height: 128px;
 }
 .text-display-3 {
-  font-family: 'Bungee', cursive;
+  font-family: 'VT323', monospace;
   font-size: 56px;
-  font-weight: 400px;
+  font-weight: 300;
   line-height: 64px;
 }
+.text-display-2 {
+  font-family: 'VT323', monospace;
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 52px;
+}
+.text-display-1 {
+  font-family: 'VT323', monospace;
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 42px;
+}
 .headline {
-  font-family: 'Bungee', cursive;
+  font-family: 'Raleway', sans-serif;
   font-size: 24px;
   font-weight: 400;
   line-height: 32px;
@@ -68,4 +93,25 @@ h1, h2, h3, h4, h5, p {
 
 .text-center {
   text-align: center;
+}
+
+.content--padding {
+  padding: 8px;
+  @media (min-width: 960px) {
+    padding: 16px;
+  }
+}
+
+.content--margin {
+  margin: 8px;
+  @media (min-width: 960px) {
+    margin: 16px;
+  }
+}
+
+/* cards */
+.card {
+  width: 100px;
+  height: 120px;
+  margin: 5px;
 }
