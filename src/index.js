@@ -1,16 +1,23 @@
+import './base.scss';
+class Generator {
+  createParagraph(__string) {
+    const textNode = document.createTextNode(__string);
+    const paragraphElement = document.createElement('P');
+    paragraphElement.appendChild(textNode);
+    return paragraphElement;
+  }
 
-function generateComponent() {
-  const element__ = document.createElement('DIV');
-  element__.className = 'container';
-
-  const paragraph = document.createElement('P');
-  const txt = document.createTextNode('Boo! ƪ(ړײ)ƪ');
-
-  paragraph.appendChild(txt);
-  element__.appendChild(paragraph);
-
-  console.log('My JavaScript log.');
-
-  return element__;
+  createDiv(__innerNode) {
+    const divElement = document.createElement('DIV');
+    if (__innerNode) {
+      divElement.appendChild(__innerNode);
+    }
+    return divElement;
+  }
 }
-document.body.appendChild(generateComponent());
+
+const gen = new Generator;
+const par = gen.createParagraph('Boo! ƪ(ړײ)ƪ');
+const div = gen.createDiv(par);
+
+document.body.appendChild(div);
