@@ -20,4 +20,4 @@ const gen = new Generator;
 const par = gen.createParagraph('Boo! ƪ(ړײ)ƪ');
 const div = gen.createDiv(par);
 
-document.body.appendChild(div);
+// document.body.appendChild(div);

@@ -2,6 +2,9 @@ const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin');
+
+const devMode = process.env.NODE_ENV === 'development';
 let config = {
   entry: './src/index.js',
   output: {
@@ -26,11 +29,29 @@ let config = {
     },{
       test: /\.(sa|sc|c)ss$/,
       use: [
-        MiniCssExtractPlugin.loader,
+        devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
         'css-loader',
         'sass-loader'
       ]
+    },{
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      loaders: [{
+        loader: 'file-loader',
+        options: {
+          name: 'assets/images/[name].[ext]'
+        }
+      }]
     }]
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, 'public'),
+    open: true
   }
 };
 module.exports = config;
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports.plugins.push(
+    new OptimizeCSSAssets() // call the css optimizer (minification)
+  );
+}
