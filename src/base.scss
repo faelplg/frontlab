@@ -2,34 +2,53 @@
  * Variables
  */
 @import './assets/stylesheets/typography.scss';
-$backgroundColor: lightblue;
+$backgroundColor: FAFAFA;
+$accentColor: #03DAC5;
 $frontlab: #AA00FF;
 
-html, body {
-  height: 100%;
-  background-color: #FAFAFA;
-  color: #222222;
-  margin:0;
+/*
+ * frontlab theme
+ */
+.frontlab--color {
+  color: $frontlab;
 }
 
-.grid__header { grid-area: header; }
-.grid__main { grid-area: main; }
-.grid__cards { grid-area: cards; }
-.grid__footer { grid-area: footer; }
-
-#grid__container {
+/*
+ * Base
+ */
+html, body {
+  height: 100%;
+  background-color: $backgroundColor;
+  color: #222222;
+  margin:0;
   overflow-x: hidden;
+}
+div {
+  box-sizing: border-box;
+}
+
+/*
+ * Grid styles
+ */
+#grid__container {
+  overflow: scroll;
   height: 100%;
   display: grid;
   grid-template-areas:
     'header'
     'main'
-    'cards'
+    'content'
     'footer';
   grid-gap: 8px;
 }
+.grid__header { grid-area: header; }
+.grid__main { grid-area: main; }
+.grid__content { grid-area: content; }
+.grid__footer { grid-area: footer; }
 
-/* css flex */
+/*
+ * Flex styles
+ */
 .flex {
   display: -webkit-box;   /* OLD - iOS6-, Safari 3.1-6, BB7 */
   display: -ms-flexbox;   /* TWEENER - IE 10 */
@@ -68,13 +87,15 @@ html, body {
   justify-content: center;
 }
 
+/*
+ * Container styles
+ */
 .content--padding {
   padding: 8px;
   @media (min-width: 960px) {
     padding: 16px;
   }
 }
-
 .content--margin {
   margin: 8px;
   @media (min-width: 960px) {
@@ -82,24 +103,34 @@ html, body {
   }
 }
 
-/* cards */
+/*
+ * Toolbar
+ */
+.toolbar {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 64px;
+  position: fixed;
+  padding: 0 16px;
+  background-color: white;
+  transition: all .28s cubic-bezier(.4,0,.2,1);
+}
+.toolbar--raised {
+  box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
+  border: none;
+  background-color: $accentColor;
+  color: #222;
+  opacity: 0.79;
+}
+
+/*
+ * Cards
+ */
 .card {
   height: 120px;
   margin: 5px;
   min-width: 320px;
   background-color: #DFDFDF;
-}
-
-/* frontlab theme */
-.frontlab--color {
-  color: $frontlab;
-}
-
-/* typography */
-a {
-  text-decoration: none;
-  color: purple;
-}
-a:hover {
-  opacity: .84;
 }

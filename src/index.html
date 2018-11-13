@@ -5,12 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>frontlab | Crafting experiences on web.</title>
-    <meta name="description" content="Basic HTML file structure.">
+    <meta name="description" content="Explaining web experiences through experiments.">
     <meta name="author" content="someone">
   </head>
   <body>
-    <div id="grid__container">
-      <div class="grid__header">
+    <div id="grid__container" onscroll="onScroll()">
+      <div class="grid__header content--padding">
+        <div class="toolbar flex flex--row">
+          <h1 class="text-mono">frontlab</h1>
+        </div>
       </div>
       <div class="grid__main content--padding align__self--center">
         <div class="flex flow--column">
@@ -20,7 +23,7 @@
           </div>
         </div>
       </div>
-      <div class="grid__cards content--padding">
+      <div class="grid__content content--padding">
         <div class="flex flow--row">
           <div class="card flex flex--row align__items--center justify__content--center">
             <h2 class="headline text--center">Experience</h2>
@@ -63,5 +66,21 @@
       <div class="grid__footer">
       </div>
     </div>
+    <script>
+      function onScroll() {
+        const _container_ = document.getElementById('grid__container');
+        const _toolbar_ = document.getElementsByClassName('toolbar')[0];
+        console.log('_toolbar_', _toolbar_);
+        const scrolled = _container_.scrollTop;
+        console.log('scrolled', scrolled);
+        if (scrolled > 50) {
+          console.log('yes');
+          _toolbar_.className = 'toolbar toolbar--raised';
+        } else {
+          console.log('no');
+          _toolbar_.className = 'toolbar';
+        }
+      }
+    </script>
   </body>
 </html>

@@ -7,10 +7,27 @@
   -webkit-text-size-adjust: 100%;
 }
 
-/* typography */
+/*
+ * Links
+ */
+a {
+  text-decoration: none;
+  color: purple;
+}
+a:hover {
+  opacity: .84;
+}
+
+/*
+ * Typography
+ */
 h1, h2, h3, h4, h5, p {
   margin-bottom: 1rem;
   margin-top: 1rem;
+}
+.text-mono {
+  font-family: 'VT323', monospace;
+  font-weight: 300;
 }
 .text-display-4 {
   font-family: 'VT323', monospace;
@@ -39,6 +56,9 @@ h1, h2, h3, h4, h5, p {
   line-height: 32px;
 }
 
+/*
+ * Text alignment
+ */
 .text--center {
   text-align: center;
 }
