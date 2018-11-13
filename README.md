@@ -1,5 +1,5 @@
 # frontlab
 
-#### Crafting components for web.
+#### Crafting experiments on web.
 
 `...soon`

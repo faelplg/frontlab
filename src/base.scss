@@ -1,9 +1,9 @@
-$backgroundColor: lightblue;
-body {
-  background-color: $backgroundColor;
-}
-
+/*
+ * Variables
+ */
 @import './assets/stylesheets/typography.scss';
+$backgroundColor: lightblue;
+$frontlab: #AA00FF;
 
 html, body {
   height: 100%;
@@ -12,7 +12,7 @@ html, body {
   margin:0;
 }
 
-.grid_header { grid-area: header; }
+.grid__header { grid-area: header; }
 .grid__main { grid-area: main; }
 .grid__cards { grid-area: cards; }
 .grid__footer { grid-area: footer; }
@@ -47,15 +47,25 @@ html, body {
   -ms-flex-flow: column wrap;
   flex-flow: column wrap;
 }
-.flow--row div,
-.flow--column div {
+.flow--row *,
+.flow--column * {
   -webkit-flex: 1; /* Safari 6.1+ */
   flex: 1;
 }
 .align__self--center {
-  -webkit-box-align: center;
-  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  -ms-grid-row-align: center;
   align-self: center;
+}
+.align__items--center {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.justify__content--center {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .content--padding {
@@ -76,22 +86,20 @@ html, body {
 .card {
   height: 120px;
   margin: 5px;
+  min-width: 320px;
+  background-color: #DFDFDF;
 }
 
 /* frontlab theme */
 .frontlab--color {
-  color: #AA00FF;
+  color: $frontlab;
 }
 
 /* typography */
 a {
   text-decoration: none;
-  color: lightskyblue;
+  color: purple;
 }
 a:hover {
-  color: blue;
-}
-
-.card {
-  background-color: #EEE;
+  opacity: .84;
 }

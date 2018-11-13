@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssets = require('optimize-css-assets-webpack-plugin');
 
+const DashboardPlugin = require('webpack-dashboard/plugin');
+
 const devMode = process.env.NODE_ENV === 'development';
 let config = {
   entry: './src/index.js',
@@ -11,15 +13,21 @@ let config = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public'),
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
   plugins: [
     new CleanWebpackPlugin(['public']),
+    new MiniCssExtractPlugin({
+      filename: 'styles.css'
+    }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       minify: false
     }),
-    new MiniCssExtractPlugin({
-      filename: 'styles.css'
-    })
+    new DashboardPlugin()
   ],
   module: {
     rules: [{
@@ -34,18 +42,26 @@ let config = {
         'sass-loader'
       ]
     },{
+      test: /\.html$/,
+      loaders: [
+        'html-loader'
+      ]
+    },{
       test: /\.(jpe?g|png|gif|svg)$/i,
       loaders: [{
         loader: 'file-loader',
         options: {
-          name: 'assets/images/[name].[ext]'
+          name: 'assets/[name].[ext]'
         }
       }]
     }]
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'public'),
-    open: true
+    historyApiFallback: true,
+    contentBase: path.resolve(__dirname, 'src'),
+    watchContentBase: true,
+    open: true,
+    clientLogLevel: 'none'
   }
 };
 module.exports = config;
