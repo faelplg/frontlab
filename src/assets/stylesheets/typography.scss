@@ -1,7 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=VT323');
+// font-family: 'VT323', monospace;
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+// font-family: 'Roboto Slab', serif;
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display');
+// font-family: 'Playfair Display', serif;
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
+// font-family: 'Libre Baskerville', serif;
 
 :root, html, body {
-  font-family: 'Courier', monospace;
+  font-family: 'Libre Baskerville', serif;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
@@ -46,19 +53,31 @@ h1, h2, h3, h4, h5, p {
   line-height: 52px;
 }
 .text-display-1 {
+  font-family: 'Roboto Slab', serif;
   font-size: 36px;
-  font-weight: 300;
+  font-weight: 700;
   line-height: 42px;
+  color: #474747;
+  letter-spacing: 3px;
 }
 .headline {
-  font-size: 24px;
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 32px;
+}
+.title {
+  font-size: 22px;
   font-weight: 400;
   line-height: 32px;
 }
 
 /*
- * Text alignment
+ * Text format
  */
 .text--center {
   text-align: center;
+}
+.text--bold {
+  font-weight: 700;
 }
