@@ -37,12 +37,17 @@ a:hover {
  * Typography
  */
 h1, h2, h3, h4, h5, p {
+  transition: all 0.6s ease;
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
 h1, h2, h3, h4, h5 {
   font-family: 'Kreon', serif;
+}
+h1 {
   font-weight: bold;
+  font-size: 32px;
+  line-height: 36px;
 }
 p {
   line-height: 24px;
@@ -83,7 +88,8 @@ p {
   }
 }
 .text-display-3 {
-  font-size: 56px;
+  font-family: 'VT323', monospace;
+  font-size: 64px;
   font-weight: 300;
   line-height: 64px;
 }
@@ -100,11 +106,9 @@ p {
   color: #474747;
   letter-spacing: 3px;
 }
-.headline {
-  font-family: 'Kreon', serif;
-  font-weight: bold;
-  font-size: 28px;
-  line-height: 32px;
+.toolbar > h1 {
+  font-size: 24px;
+  line-height: normal;
 }
 .title {
   font-family: 'Libre Baskerville', serif;
@@ -134,9 +138,9 @@ p {
 }
 .caption {
   font-family: 'Libre Baskerville', serif;
-  font-size: 16px;
-  font-weight: light;
-  line-height: 20px;
+  font-size: 14px;
+  color: #6a6565;
+  line-height: 24px;
 }
 
 /*

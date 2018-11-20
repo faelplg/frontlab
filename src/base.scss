@@ -3,8 +3,8 @@
  */
 @import './assets/stylesheets/variables.scss';
 @import './assets/stylesheets/typography.scss';
-$backgroundColor: FAFAFA;
-$accentColor: #03DAC5;
+$backgroundColor: #FAFAFA;
+$accentColor: #f5e2ff;
 $frontlab: #AA00FF;
 
 /*
@@ -69,6 +69,7 @@ div {
 .flow--column {
   flex-flow: column wrap;
 }
+.flex__item,
 .flow--row *,
 .flow--column * {
   flex: 1;
@@ -133,8 +134,11 @@ div {
   height: 64px;
   position: fixed;
   padding: 0 16px;
-  background-color: white;
+  background-color: $backgroundColor;
   transition: all 0.6s ease;
+}
+.toolbar:not(.toolbar--raised) > h1 {
+  opacity: 0;
 }
 .toolbar--raised {
   box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
@@ -148,8 +152,9 @@ div {
  * Cards
  */
 .card {
-  height: 120px;
+  height: 100px;
   margin: 5px;
+  max-width: 280px;
   min-width: 200px;
   background-color: #DFDFDF;
   transition: all 0.4s ease;
@@ -157,25 +162,61 @@ div {
 .card:not(.disabled) {
   box-shadow: $box_shadow;
 }
+.card.inactive {
+  display: none;
+}
 .card:focus {
   outline: none;
 }
 .card.disabled {
-  height: 120px;
-  margin: 5px;
-  min-width: 200px;
   background-color: #EAEAEA;
   color: #BDBDBD;
 }
 .card:not(.disabled):hover {
   cursor: pointer;
-  opacity: 0.9;
+  background-color: $accentColor;
   box-shadow: $big_box_shadow;
+}
+
+/*
+ * Button styles
+ */
+.button {
+  box-sizing: border-box;
+  background-color: $frontlab;
+  font-weight: bold;
+  color: white;
+  height: 36px;
+  min-width: 48px;
+  margin: 8px 16px;
+  padding: 0 16px;
+  box-shadow: 0 3px 1px -2px rgba(206, 16, 16, 0.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  transition: box-shadow .28s cubic-bezier(.4,0,.2,1);
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+}
+.button:hover {
+  opacity: 0.82;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+}
+.button:active,
+.button:focus {
+  outline: none;
+}
+.button:active {
+  box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
 }
 
 /*
  * Tables
  */
+table {
+  @media (max-width:$phone_only) {
+    display: none;
+  }
+}
 tr > th,
 tr > td {
   padding: 16px;

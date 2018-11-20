@@ -12,24 +12,26 @@
   <body>
     <div id="grid__container" onscroll="onScroll()">
       <div class="grid__header">
-        <div class="toolbar flex flex--row">
-          <h1 class="text-mono">experiments on web</h1>
+        <div class="toolbar flex flex--row align__items--center">
+          <h1 id="title-frontlab" role="button" class="text-mono">frontlab</h1>
+          <span class="flex__item"></span>
+          <button id="button-wtf" class="button" type="button" aria-label="What is this project?">wtf</button>
         </div>
       </div>
       <div class="grid__main align__self--center">
         <div class="flex flow--column">
           <div>
-            <h1 class="text-display-4 text--center frontlab--color no-margins">frontlab</h1>
+            <h1 class="text-display-3 text--center frontlab--color no-margins">frontlab</h1>
           </div>
         </div>
       </div>
       <div class="grid__content content--padding">
-        <div class="flex flow--row">
+        <div class="flex flow--row justify__content--center">
           <div class="card disabled flex flex--row align__items--center justify__content--center">
             <h2 class="title text--center">Experience</h2>
           </div>
         </div>
-        <div class="flex flow--row">
+        <div class="flex flow--row justify__content--center">
           <div class="card flex disabled flex--row align__items--center justify__content--center">
             <h2 class="title text--center">Interactions</h2>
           </div>
@@ -37,7 +39,7 @@
             <h2 class="title text--center">Micro(-)interactions</h2>
           </div>
         </div>
-        <div class="flex flow--row">
+        <div class="flex flow--row justify__content--center">
           <div class="card disabled flex flex--row align__items--center justify__content--center">
             <h2 class="title text--center">Layout</h2>
           </div>
@@ -48,11 +50,11 @@
             <h2 class="title text--center">Animations</h2>
           </div>
         </div>
-        <div class="flex flow--row">
+        <div class="flex flow--row justify__content--center">
           <div class="card disabled flex flex--row align__items--center justify__content--center">
             <h2 class="title text--center">Fundamentals</h2>
           </div>
-          <div class="card flex flex--row align__items--center justify__content--center">
+          <div id="card-deployment" class="card flex flex--row align__items--center justify__content--center">
             <h2 class="title text--center">Deployment</h2>
           </div>
           <div class="card disabled flex flex--row align__items--center justify__content--center">
@@ -76,9 +78,9 @@
         const _toolbar_ = document.getElementsByClassName('toolbar')[0];
         const scrolled = _container_.scrollTop;
         if (scrolled > 50) {
-          _toolbar_.className = 'toolbar toolbar--raised';
+          _toolbar_.className = 'toolbar toolbar--raised flex flex--row align__items--center';
         } else {
-          _toolbar_.className = 'toolbar';
+          _toolbar_.className = 'toolbar flex flex--row align__items--center';
         }
       }
     </script>
