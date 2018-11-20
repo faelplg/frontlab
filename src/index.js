@@ -11,6 +11,5 @@ fetch(_url_, {
   return response.text();
 }).then(result => {
   const _content_ = converter.makeHtml(result);
-  console.log('_content_', _content_);
   document.getElementById('web-development-researches').innerHTML = _content_;
 });
