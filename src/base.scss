@@ -1,6 +1,7 @@
 /*
  * Variables
  */
+@import './assets/stylesheets/variables.scss';
 @import './assets/stylesheets/typography.scss';
 $backgroundColor: FAFAFA;
 $accentColor: #03DAC5;
@@ -41,8 +42,14 @@ div {
     'footer';
   grid-gap: 8px;
 }
-.grid__header { grid-area: header; }
-.grid__main { grid-area: main; }
+.grid__header {
+  grid-area: header;
+  height: 64px;
+}
+.grid__main {
+  grid-area: main;
+  max-height: 100px;
+}
 .grid__content { grid-area: content; }
 .grid__footer { grid-area: footer; }
 
@@ -57,40 +64,52 @@ div {
 }
 
 .flow--row {
-  -webkit-flex-flow: row wrap;
-  -ms-flex-flow: row wrap;
   flex-flow: row wrap;
 }
 .flow--column {
-  -webkit-flex-flow: column wrap;
-  -ms-flex-flow: column wrap;
   flex-flow: column wrap;
 }
 .flow--row *,
 .flow--column * {
-  -webkit-flex: 1; /* Safari 6.1+ */
   flex: 1;
 }
 .align__self--center {
-  -ms-flex-item-align: center;
-  -ms-grid-row-align: center;
   align-self: center;
 }
 .align__items--center {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
   align-items: center;
 }
 .justify__content--center {
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
   justify-content: center;
 }
 
 /*
  * Container styles
  */
+.page__content {
+  // phones
+  @media (max-width:$phone_only) {
+    padding: 0 10px;
+  }
+  // tablet portrait
+  @media (min-width: $tablet_portrait_min) and (max-width: $tablet_portrait_max) {
+    padding: 0 40px;
+  }
+  // tablet landscape
+  @media (min-width: $tablet_landscape_min) and (max-width: $tablet_landscape_max) {
+    padding: 0 60px;
+  }
+  // desktops
+  @media (min-width: $desktop_min) and (max-width: $desktop_max) {
+    padding: 0 220px;
+  }
+  // large desktops
+  @media (min-width: $big_desktop_min) {
+    padding: 0 300px;
+  }
+}
 .content--padding {
+  box-sizing: border-box;
   padding: 8px;
   @media (min-width: 960px) {
     padding: 16px;
@@ -115,7 +134,7 @@ div {
   position: fixed;
   padding: 0 16px;
   background-color: white;
-  transition: all .28s cubic-bezier(.4,0,.2,1);
+  transition: all 0.6s ease;
 }
 .toolbar--raised {
   box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
@@ -131,8 +150,35 @@ div {
 .card {
   height: 120px;
   margin: 5px;
-  min-width: 320px;
+  min-width: 200px;
   background-color: #DFDFDF;
+  transition: all 0.4s ease;
+}
+.card:not(.disabled) {
+  box-shadow: $box_shadow;
+}
+.card:focus {
+  outline: none;
+}
+.card.disabled {
+  height: 120px;
+  margin: 5px;
+  min-width: 200px;
+  background-color: #EAEAEA;
+  color: #BDBDBD;
+}
+.card:not(.disabled):hover {
+  cursor: pointer;
+  opacity: 0.9;
+  box-shadow: $big_box_shadow;
+}
+
+/*
+ * Tables
+ */
+tr > th,
+tr > td {
+  padding: 16px;
 }
 
 /*

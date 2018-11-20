@@ -6,6 +6,14 @@
 // font-family: 'Playfair Display', serif;
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
 // font-family: 'Libre Baskerville', serif;
+@import url('https://fonts.googleapis.com/css?family=Kreon');
+// font-family: 'Kreon', serif;
+
+@import url('https://fonts.googleapis.com/css?family=Abel|Share+Tech+Mono|Squada+One|Ubuntu+Mono');
+// font-family: 'Abel', sans-serif;
+// font-family: 'Ubuntu Mono', monospace;
+// font-family: 'Squada One', cursive;
+// font-family: 'Share Tech Mono', monospace;
 
 :root, html, body {
   font-family: 'Libre Baskerville', serif;
@@ -32,15 +40,47 @@ h1, h2, h3, h4, h5, p {
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
+h1, h2, h3, h4, h5 {
+  font-family: 'Kreon', serif;
+  font-weight: bold;
+}
+p {
+  line-height: 24px;
+}
 .text-mono {
   font-family: 'VT323', monospace;
   font-weight: 300;
 }
 .text-display-4 {
   font-family: 'VT323', monospace;
-  font-size: 112px;
+  font-size: 100px;
+  line-height: 110px;
   font-weight: 300;
-  line-height: 128px;
+  // phones
+  @media (max-width:$phone_only) {
+    font-size: 90px;
+    line-height: 110px;
+  }
+  // tablet portrait
+  @media (min-width: $tablet_portrait_min) and (max-width: $tablet_portrait_max) {
+    font-size: 100px;
+    line-height: 110px;
+  }
+  // tablet landscape
+  @media (min-width: $tablet_landscape_min) and (max-width: $tablet_landscape_max) {
+    font-size: 110px;
+    line-height: 110px;
+  }
+  // desktops
+  @media (min-width: $desktop_min) and (max-width: $desktop_max) {
+    font-size: 110px;
+    line-height: 110px;
+  }
+  // large desktops
+  @media (min-width: $big_desktop_min) {
+    font-size: 120px;
+    line-height: 110px;
+  }
 }
 .text-display-3 {
   font-size: 56px;
@@ -53,23 +93,50 @@ h1, h2, h3, h4, h5, p {
   line-height: 52px;
 }
 .text-display-1 {
-  font-family: 'Roboto Slab', serif;
+  font-family: 'Abel', sans-serif;
   font-size: 36px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 42px;
   color: #474747;
   letter-spacing: 3px;
 }
 .headline {
-  font-family: 'Playfair Display', serif;
-  font-size: 30px;
-  font-weight: 400;
+  font-family: 'Kreon', serif;
+  font-weight: bold;
+  font-size: 28px;
   line-height: 32px;
 }
 .title {
-  font-size: 22px;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 18px;
   font-weight: 400;
   line-height: 32px;
+  // phones
+  @media (max-width:$phone_only) {
+    font-size: 18px;
+  }
+  // tablet portrait
+  @media (min-width: $tablet_portrait_min) and (max-width: $tablet_portrait_max) {
+    font-size: 18px;
+  }
+  // tablet landscape
+  @media (min-width: $tablet_landscape_min) and (max-width: $tablet_landscape_max) {
+    font-size: 18px;
+  }
+  // desktops
+  @media (min-width: $desktop_min) and (max-width: $desktop_max) {
+    font-size: 18px;
+  }
+  // large desktops
+  @media (min-width: $big_desktop_min) {
+    font-size: 20px;
+  }
+}
+.caption {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 16px;
+  font-weight: light;
+  line-height: 20px;
 }
 
 /*

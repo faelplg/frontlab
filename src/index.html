@@ -7,65 +7,64 @@
     <title>frontlab | Crafting experiences on web.</title>
     <meta name="description" content="Explaining web experiences through experiments.">
     <meta name="author" content="someone">
+    <script src="https://cdn.rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js"></script>
   </head>
   <body>
     <div id="grid__container" onscroll="onScroll()">
-      <div class="grid__header content--padding">
+      <div class="grid__header">
         <div class="toolbar flex flex--row">
-          <h1 class="text-mono">frontlab</h1>
+          <h1 class="text-mono">experiments on web</h1>
         </div>
       </div>
-      <div class="grid__main content--padding align__self--center">
+      <div class="grid__main align__self--center">
         <div class="flex flow--column">
           <div>
             <h1 class="text-display-4 text--center frontlab--color no-margins">frontlab</h1>
-            <h2 class="text-display-1 text--center no-margins">Crafting experiments on web.</h2>
           </div>
         </div>
       </div>
       <div class="grid__content content--padding">
         <div class="flex flow--row">
-          <div class="card flex flex--row align__items--center justify__content--center">
+          <div class="card disabled flex flex--row align__items--center justify__content--center">
             <h2 class="title text--center">Experience</h2>
           </div>
         </div>
         <div class="flex flow--row">
-          <div class="card flex flex--row align__items--center justify__content--center">
+          <div class="card flex disabled flex--row align__items--center justify__content--center">
             <h2 class="title text--center">Interactions</h2>
           </div>
-          <div class="card flex flex--row align__items--center justify__content--center">
+          <div class="card disabled flex flex--row align__items--center justify__content--center">
             <h2 class="title text--center">Micro(-)interactions</h2>
           </div>
         </div>
         <div class="flex flow--row">
-          <div class="card flex flex--row align__items--center justify__content--center">
+          <div class="card disabled flex flex--row align__items--center justify__content--center">
             <h2 class="title text--center">Layout</h2>
           </div>
-          <div class="card flex flex--row align__items--center justify__content--center">
+          <div class="card disabled flex flex--row align__items--center justify__content--center">
             <h2 class="title text--center">Components</h2>
           </div>
-          <div class="card flex flex--row align__items--center justify__content--center">
+          <div class="card disabled flex flex--row align__items--center justify__content--center">
             <h2 class="title text--center">Animations</h2>
           </div>
         </div>
         <div class="flex flow--row">
-          <div class="card flex flex--row align__items--center justify__content--center">
+          <div class="card disabled flex flex--row align__items--center justify__content--center">
             <h2 class="title text--center">Fundamentals</h2>
           </div>
           <div class="card flex flex--row align__items--center justify__content--center">
-            <h2 class="title text--center">Environment</h2>
+            <h2 class="title text--center">Deployment</h2>
           </div>
-          <div class="card flex flex--row align__items--center justify__content--center">
+          <div class="card disabled flex flex--row align__items--center justify__content--center">
             <h2 class="title text--center">Architecture</h2>
           </div>
-          <div class="card flex flex--row align__items--center justify__content--center">
+          <div class="card disabled flex flex--row align__items--center justify__content--center">
             <h2 class="title text--center">Design System</h2>
           </div>
         </div>
-        <div class="flex flow--column">
-          <div class="flex flex--row align__items--center justify__content--center">
-            <h2 class="headline">Pyramid of Web Experience</h2>
-          </div>
+        <div class="page__content flex flow--column align__items--center justify__content--center">
+          <p class="caption"><strong>Theoretical framework:</strong> Pyramid of Web Development</p>
+          <div id="web-development-researches"></div>
         </div>
       </div>
       <div class="grid__footer">
@@ -75,14 +74,10 @@
       function onScroll() {
         const _container_ = document.getElementById('grid__container');
         const _toolbar_ = document.getElementsByClassName('toolbar')[0];
-        console.log('_toolbar_', _toolbar_);
         const scrolled = _container_.scrollTop;
-        console.log('scrolled', scrolled);
         if (scrolled > 50) {
-          console.log('yes');
           _toolbar_.className = 'toolbar toolbar--raised';
         } else {
-          console.log('no');
           _toolbar_.className = 'toolbar';
         }
       }
