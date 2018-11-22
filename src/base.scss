@@ -32,35 +32,28 @@ div {
  * Grid styles
  */
 #grid__container {
-  overflow: scroll;
+  overflow-y: scroll;
   height: 100%;
   display: grid;
-  grid-template-areas:
-    'header'
-    'main'
-    'content'
-    'footer';
-  grid-gap: 8px;
+  grid-template-rows: 64px min-content auto min-content;
+  grid-template-columns: auto;
+  grid-gap: 8px 8px;
 }
 .grid__header {
-  grid-area: header;
   height: 64px;
 }
 .grid__main {
-  grid-area: main;
   max-height: 100px;
 }
-.grid__content { grid-area: content; }
-.grid__footer { grid-area: footer; }
 
 /*
  * Flex styles
  */
 .flex {
-  display: -webkit-box;   /* OLD - iOS6-, Safari 3.1-6, BB7 */
-  display: -ms-flexbox;   /* TWEENER - IE 10 */
-  display: -webkit-flex;  /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
-  display: flex;          /* NEW, Spec - Firefox, Chrome, Opera */
+  display: flex;
+}
+.inline-flex {
+  display: inline-flex;
 }
 
 .flow--row {
@@ -72,16 +65,19 @@ div {
 .flex__item,
 .flow--row *,
 .flow--column * {
-  flex: 1;
+  flex: auto;
 }
-.align__self--center {
-  align-self: center;
+.flex--none {
+  flex: none;
 }
 .align__items--center {
   align-items: center;
 }
 .justify__content--center {
   justify-content: center;
+}
+.align__self--center {
+  align-self: center;
 }
 
 /*
@@ -170,12 +166,46 @@ div {
 }
 .card.disabled {
   background-color: #EAEAEA;
-  color: #BDBDBD;
+  color: #999999;
 }
 .card:not(.disabled):hover {
   cursor: pointer;
   background-color: $accentColor;
   box-shadow: $big_box_shadow;
+}
+
+/*
+ * Icon style
+ */
+.icon {
+  height:60px;
+  width:60px;
+  margin: 0px 8px;
+  // phones
+  @media (max-width:$phone_only) {
+    height:60px;
+    width:60px;
+  }
+  // tablet portrait
+  @media (min-width: $tablet_portrait_min) and (max-width: $tablet_portrait_max) {
+    height:75px;
+    width:75px;
+  }
+  // tablet landscape
+  @media (min-width: $tablet_landscape_min) and (max-width: $tablet_landscape_max) {
+    height:80px;
+    width:80px;
+  }
+  // desktops
+  @media (min-width: $desktop_min) and (max-width: $desktop_max) {
+    height:95px;
+    width:95px;
+  }
+  // large desktops
+  @media (min-width: $big_desktop_min) {
+    height:100px;
+    width:100px;
+  }
 }
 
 /*

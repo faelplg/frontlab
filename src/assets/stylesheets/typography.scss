@@ -1,19 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=VT323');
 // font-family: 'VT323', monospace;
-@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
-// font-family: 'Roboto Slab', serif;
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display');
 // font-family: 'Playfair Display', serif;
 @import url('https://fonts.googleapis.com/css?family=Libre+Baskerville');
 // font-family: 'Libre Baskerville', serif;
 @import url('https://fonts.googleapis.com/css?family=Kreon');
 // font-family: 'Kreon', serif;
-
-@import url('https://fonts.googleapis.com/css?family=Abel|Share+Tech+Mono|Squada+One|Ubuntu+Mono');
-// font-family: 'Abel', sans-serif;
-// font-family: 'Ubuntu Mono', monospace;
-// font-family: 'Squada One', cursive;
-// font-family: 'Share Tech Mono', monospace;
 
 :root, html, body {
   font-family: 'Libre Baskerville', serif;
@@ -58,33 +50,33 @@ p {
 }
 .text-display-4 {
   font-family: 'VT323', monospace;
-  font-size: 100px;
-  line-height: 110px;
+  font-size: 65px;
+  line-height: 80px;
   font-weight: 300;
   // phones
   @media (max-width:$phone_only) {
-    font-size: 90px;
-    line-height: 110px;
+    font-size: 65px;
+    line-height: 80px;
   }
   // tablet portrait
   @media (min-width: $tablet_portrait_min) and (max-width: $tablet_portrait_max) {
-    font-size: 100px;
-    line-height: 110px;
+    font-size: 80px;
+    line-height: 90px;
   }
   // tablet landscape
   @media (min-width: $tablet_landscape_min) and (max-width: $tablet_landscape_max) {
-    font-size: 110px;
-    line-height: 110px;
+    font-size: 90px;
+    line-height: 100px;
   }
   // desktops
   @media (min-width: $desktop_min) and (max-width: $desktop_max) {
-    font-size: 110px;
-    line-height: 110px;
+    font-size: 100px;
+    line-height: 120px;
   }
   // large desktops
   @media (min-width: $big_desktop_min) {
-    font-size: 120px;
-    line-height: 110px;
+    font-size: 110px;
+    line-height: 130px;
   }
 }
 .text-display-3 {
