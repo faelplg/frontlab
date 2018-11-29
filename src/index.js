@@ -20,22 +20,66 @@ const _deployment_ = 'https://api.github.com/repos/faelplg/web-development-resea
 const fetchService = new FetchService();
 
 /*
- *  Debug
- */
-console.log('---DEBUG---');
-
-/*
  *
- *  Storage management
+ *  Content management
  *  Update information about content.
  *
  */
-/** Get content: WTF */
-let FrontlabWTF = localStorage.getItem('frontlab-wtf');
-if(FrontlabWTF) {
-  console.log('REFRESHING STORAGE');
-  fetchService.refreshContent(FrontlabWTF);
-} else {
-  console.log('FETCHING NEW CONTENT');
-  fetchService.fetchUrl(_wtf_);
-}
+let now = moment();
+/*
+ *
+ *  WTF button
+ *
+ */
+const buttonWTF = document.getElementById('button-wtf');
+buttonWTF.addEventListener("click", () => {
+  let FrontlabWTF = localStorage.getItem('frontlab-wtf');
+  let wtfDuration;
+  let wtfHours;
+  if (FrontlabWTF) {
+    let FrontlabWTFStamp = moment(localStorage.getItem('frontlab-wtf-stamp'));
+    wtfDuration = moment.duration(now.diff(FrontlabWTFStamp));
+    wtfHours = wtfDuration.asHours();
+  }
+  if(!wtfDuration) {
+    console.log('NEW ACCESS. FETCHING CONTENT.');
+    fetchService.fetchUrl(_wtf_, 'frontlab-wtf');
+  } else {
+    if (wtfHours < 1) {
+      console.log('VALID CONTENT. REFRESHING');
+      fetchService.refreshContent(FrontlabWTF);
+    } else {
+      console.log('EXPIRED. FETCHING NEW CONTENT.');
+      fetchService.fetchUrl(_wtf_, 'frontlab-wtf');
+    }
+  }
+});
+
+/*
+ *
+ *  Deployment card
+ *
+ */
+const cardDeployment = document.getElementById('card-deployment');
+cardDeployment.addEventListener("click", () => {
+  let FrontlabDeployment = localStorage.getItem('frontlab-deployment');
+  let deploymentDuration;
+  let deploymentHours;
+  if (FrontlabDeployment) {
+    let FrontlabDeploymentStamp = moment(localStorage.getItem('frontlab-deployment-stamp'));
+    deploymentDuration = moment.duration(now.diff(FrontlabDeploymentStamp));
+    deploymentHours = deploymentDuration.asHours();
+  }
+  if(!deploymentDuration) {
+    console.log('NEW ACCESS. FETCHING CONTENT.');
+    fetchService.fetchUrl(_deployment_, 'frontlab-deployment');
+  } else {
+    if (deploymentHours < 1) {
+      console.log('VALID CONTENT. REFRESHING');
+      fetchService.refreshContent(FrontlabDeployment);
+    } else {
+      console.log('EXPIRED. FETCHING NEW CONTENT');
+      fetchService.fetchUrl(_deployment_, 'frontlab-deployment');
+    }
+  }
+});
