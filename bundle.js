@@ -185,28 +185,75 @@ var _deployment_ = 'https://api.github.com/repos/faelplg/web-development-researc
 
 var fetchService = new _lab_data_fetch_data__WEBPACK_IMPORTED_MODULE_2__["default"]();
 /*
- *  Debug
- */
-
-console.log('---DEBUG---');
-/*
  *
- *  Storage management
+ *  Content management
  *  Update information about content.
  *
  */
 
-/** Get content: WTF */
+var now = moment__WEBPACK_IMPORTED_MODULE_1___default()();
+/*
+ *
+ *  WTF button
+ *
+ */
 
-var FrontlabWTF = localStorage.getItem('frontlab-wtf');
+var buttonWTF = document.getElementById('button-wtf');
+buttonWTF.addEventListener("click", function () {
+  var FrontlabWTF = localStorage.getItem('frontlab-wtf');
+  var wtfDuration;
+  var wtfHours;
 
-if (FrontlabWTF) {
-  console.log('REFRESHING STORAGE');
-  fetchService.refreshContent(FrontlabWTF);
-} else {
-  console.log('FETCHING NEW CONTENT');
-  fetchService.fetchUrl(_wtf_);
-}
+  if (FrontlabWTF) {
+    var FrontlabWTFStamp = moment__WEBPACK_IMPORTED_MODULE_1___default()(localStorage.getItem('frontlab-wtf-stamp'));
+    wtfDuration = moment__WEBPACK_IMPORTED_MODULE_1___default.a.duration(now.diff(FrontlabWTFStamp));
+    wtfHours = wtfDuration.asHours();
+  }
+
+  if (!wtfDuration) {
+    console.log('NEW ACCESS. FETCHING CONTENT.');
+    fetchService.fetchUrl(_wtf_, 'frontlab-wtf');
+  } else {
+    if (wtfHours < 1) {
+      console.log('VALID CONTENT. REFRESHING');
+      fetchService.refreshContent(FrontlabWTF);
+    } else {
+      console.log('EXPIRED. FETCHING NEW CONTENT.');
+      fetchService.fetchUrl(_wtf_, 'frontlab-wtf');
+    }
+  }
+});
+/*
+ *
+ *  Deployment card
+ *
+ */
+
+var cardDeployment = document.getElementById('card-deployment');
+cardDeployment.addEventListener("click", function () {
+  var FrontlabDeployment = localStorage.getItem('frontlab-deployment');
+  var deploymentDuration;
+  var deploymentHours;
+
+  if (FrontlabDeployment) {
+    var FrontlabDeploymentStamp = moment__WEBPACK_IMPORTED_MODULE_1___default()(localStorage.getItem('frontlab-deployment-stamp'));
+    deploymentDuration = moment__WEBPACK_IMPORTED_MODULE_1___default.a.duration(now.diff(FrontlabDeploymentStamp));
+    deploymentHours = deploymentDuration.asHours();
+  }
+
+  if (!deploymentDuration) {
+    console.log('NEW ACCESS. FETCHING CONTENT.');
+    fetchService.fetchUrl(_deployment_, 'frontlab-deployment');
+  } else {
+    if (deploymentHours < 1) {
+      console.log('VALID CONTENT. REFRESHING');
+      fetchService.refreshContent(FrontlabDeployment);
+    } else {
+      console.log('EXPIRED. FETCHING NEW CONTENT');
+      fetchService.fetchUrl(_deployment_, 'frontlab-deployment');
+    }
+  }
+});
 
 /***/ }),
 
@@ -223,11 +270,14 @@ if (FrontlabWTF) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return FetchService; });
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(7);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_0__);
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 
 var converter = new showdown.Converter({
   tables: true
@@ -246,10 +296,35 @@ function () {
       var _content_ = converter.makeHtml(_md);
 
       document.getElementById('web-development-researches').innerHTML = _content_;
+      var linksArray;
+      linksArray = document.getElementsByTagName('a');
+      var _iteratorNormalCompletion = true;
+      var _didIteratorError = false;
+      var _iteratorError = undefined;
+
+      try {
+        for (var _iterator = linksArray[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+          var link = _step.value;
+          link.setAttribute('target', '_blank');
+        }
+      } catch (err) {
+        _didIteratorError = true;
+        _iteratorError = err;
+      } finally {
+        try {
+          if (!_iteratorNormalCompletion && _iterator.return != null) {
+            _iterator.return();
+          }
+        } finally {
+          if (_didIteratorError) {
+            throw _iteratorError;
+          }
+        }
+      }
     }
   }, {
     key: "fetchUrl",
-    value: function fetchUrl(_url) {
+    value: function fetchUrl(_url, _key) {
       var _this = this;
 
       fetch(_url, {
@@ -259,7 +334,10 @@ function () {
       }).then(function (response) {
         return response.text();
       }).then(function (result) {
-        localStorage.setItem('frontlab-wtf', result);
+        localStorage.removeItem("".concat(_key, "-stamp"));
+        localStorage.removeItem(_key);
+        localStorage.setItem("".concat(_key, "-stamp"), moment__WEBPACK_IMPORTED_MODULE_0___default()().format());
+        localStorage.setItem(_key, result);
 
         _this.refreshContent(result);
       });
