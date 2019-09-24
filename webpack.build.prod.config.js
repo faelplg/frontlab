@@ -87,8 +87,10 @@ module.exports = {
         options: {
           sourceMap: true,
           implementation: require('sass'),
-          fiber: Fiber,
-          includePaths: ['./node_modules']
+          sassOptions: {
+            fiber: Fiber,
+            includePaths: ['./node_modules']
+          }
         }
       }]
     }, {
