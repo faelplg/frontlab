@@ -1,6 +1,6 @@
 {
   "name": "frontlab",
-  "version": "1.0.1",
+  "version": "0.1.1",
   "description": "Experiments on the web.",
   "main": "index.js",
   "scripts": {
