@@ -9,7 +9,8 @@ import FetchService from './lab/data/fetch.data';
  *
  */
 const _wtf_ = 'https://api.github.com/repos/faelplg/web-development-researches/readme';
-const _deployment_ = 'https://api.github.com/repos/faelplg/web-development-researches/contents/deployment/README.md'
+const _engineering_ = 'https://api.github.com/repos/faelplg/web-development-researches/contents/engineering/README.md'
+const _deployment_ = 'https://api.github.com/repos/faelplg/web-development-researches/contents/engineering/deployment/README.md'
 
 /*
  *
@@ -55,10 +56,35 @@ buttonWTF.addEventListener("click", () => {
   }
 });
 
-/*
- *
- *  Deployment card
- *
+/**
+ * 3 - Software Engineering content
+ */
+const cardEngineering = document.getElementById('card-engineering');
+cardEngineering.addEventListener("click", () => {
+  let FrontlabEngineering = localStorage.getItem('frontlab-engineering');
+  let engineeringDuration;
+  let engineeringHours;
+  if (FrontlabEngineering) {
+    let FrontlabEngineeringStamp = moment(localStorage.getItem('frontlab-engineering-stamp'));
+    engineeringDuration = moment.duration(now.diff(FrontlabEngineeringStamp));
+    engineeringHours = engineeringDuration.asHours();
+  }
+  if(!engineeringDuration) {
+    console.log('NEW ACCESS. FETCHING CONTENT.');
+    fetchService.fetchUrl(_engineering_, 'frontlab-engineering');
+  } else {
+    if (engineeringHours < 1) {
+      console.log('VALID CONTENT. REFRESHING');
+      fetchService.refreshContent(FrontlabEngineering);
+    } else {
+      console.log('EXPIRED. FETCHING NEW CONTENT');
+      fetchService.fetchUrl(_engineering_, 'frontlab-engineering');
+    }
+  }
+});
+
+/**
+ * 3.1 - Software deployment content
  */
 const cardDeployment = document.getElementById('card-deployment');
 cardDeployment.addEventListener("click", () => {
