@@ -91,15 +91,16 @@ module.exports = {
     /**
      * Use the code below for compiling Markdown files.
      */
-    // {
-    //   test: /\.(md)$/,
-    //   use: [{
-    //     loader: "markdown-loader"
-    //     options: {
-    //       name: '[name].[ext]'
-    //     }
-    //   }]
-    // },
+    {
+      test: /\.(md)$/,
+      use: [{
+        // loader: "markdown-loader"
+        loader: 'raw-loader'
+        // options: {
+        //   name: '[name].[ext]'
+        // }
+      }]
+    },
     {
       test: /\.(png|svg|jpg|jpeg|gif)$/,
       use: [{
