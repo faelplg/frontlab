@@ -1,14 +1,15 @@
 import './base.scss';
 import moment from 'moment';
+import MarkdownIt from 'markdown-it';
 import FetchService from './lab/data/fetch.data';
 
-/*
- *
- *  Urls
- *  Available content URLs
- *
+/**
+ * Content
  */
-const _wtf_ = 'https://api.github.com/repos/faelplg/web-development-researches/readme';
+// const _wtf_ = 'https://api.github.com/repos/faelplg/web-development-researches/readme';
+const _md_ = new MarkdownIt();
+const _wtf_ = _md_.render('### Test');
+console.log('_wtf_', _wtf_);
 const _engineering_ = 'https://api.github.com/repos/faelplg/web-development-researches/contents/engineering/README.md'
 const _deployment_ = 'https://api.github.com/repos/faelplg/web-development-researches/contents/engineering/deployment/README.md'
 
@@ -86,26 +87,26 @@ cardEngineering.addEventListener("click", () => {
 /**
  * 3.1 - Software deployment content
  */
-const cardDeployment = document.getElementById('card-deployment');
-cardDeployment.addEventListener("click", () => {
-  let FrontlabDeployment = localStorage.getItem('frontlab-deployment');
-  let deploymentDuration;
-  let deploymentHours;
-  if (FrontlabDeployment) {
-    let FrontlabDeploymentStamp = moment(localStorage.getItem('frontlab-deployment-stamp'));
-    deploymentDuration = moment.duration(now.diff(FrontlabDeploymentStamp));
-    deploymentHours = deploymentDuration.asHours();
-  }
-  if(!deploymentDuration) {
-    console.log('NEW ACCESS. FETCHING CONTENT.');
-    fetchService.fetchUrl(_deployment_, 'frontlab-deployment');
-  } else {
-    if (deploymentHours < 1) {
-      console.log('VALID CONTENT. REFRESHING');
-      fetchService.refreshContent(FrontlabDeployment);
-    } else {
-      console.log('EXPIRED. FETCHING NEW CONTENT');
-      fetchService.fetchUrl(_deployment_, 'frontlab-deployment');
-    }
-  }
-});
+// const cardDeployment = document.getElementById('card-deployment');
+// cardDeployment.addEventListener("click", () => {
+//   let FrontlabDeployment = localStorage.getItem('frontlab-deployment');
+//   let deploymentDuration;
+//   let deploymentHours;
+//   if (FrontlabDeployment) {
+//     let FrontlabDeploymentStamp = moment(localStorage.getItem('frontlab-deployment-stamp'));
+//     deploymentDuration = moment.duration(now.diff(FrontlabDeploymentStamp));
+//     deploymentHours = deploymentDuration.asHours();
+//   }
+//   if(!deploymentDuration) {
+//     console.log('NEW ACCESS. FETCHING CONTENT.');
+//     fetchService.fetchUrl(_deployment_, 'frontlab-deployment');
+//   } else {
+//     if (deploymentHours < 1) {
+//       console.log('VALID CONTENT. REFRESHING');
+//       fetchService.refreshContent(FrontlabDeployment);
+//     } else {
+//       console.log('EXPIRED. FETCHING NEW CONTENT');
+//       fetchService.fetchUrl(_deployment_, 'frontlab-deployment');
+//     }
+//   }
+// });

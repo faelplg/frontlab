@@ -77,8 +77,8 @@ module.exports = {
           sourceMap: true,
           implementation: require('sass'),
           sassOptions: {
-            fiber: Fiber,
-            includePaths: ['./node_modules']
+            fiber: Fiber
+            // includePaths: ['./node_modules']
           }
         }
       }]
@@ -94,7 +94,7 @@ module.exports = {
     // {
     //   test: /\.(md)$/,
     //   use: [{
-    //     loader: "file-loader",
+    //     loader: "markdown-loader"
     //     options: {
     //       name: '[name].[ext]'
     //     }
